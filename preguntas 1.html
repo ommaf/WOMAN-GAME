@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Cuidado de la Piel</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        #game-container {
+            margin: 20px auto;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #C733FF;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #question-container {
+            margin-bottom: 20px;
+        }
+
+        #options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            background-color: #FF3333;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="game-container">
+        <h1>Juego de Cuidado de la Piel - &#128156 Mujer &#128075</h1>
+        <div id="question-container"></div>
+        <div id="options-container"></div>
+        <button onclick="nextQuestion()">Siguiente Pregunta</button>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: '¿Cuál es la importancia de la hidratación diaria para la piel?',
+                options: ['Mantiene la piel joven y saludable', 'Provoca arrugas', 'No tiene impacto en la piel', 'Tiene un gran impacto a largo plazo el cuidado de la piel'],
+                correctAnswer: 'Mantiene la piel joven y saludable'
+            },
+            {
+                question: '¿Cuál es el mejor momento para aplicar protector solar?',
+                options: ['Solo en verano', 'Solo en invierno', 'Todos los días, incluso en días nublados', 'Solo de 8 a 12 de la mañana','Solo despues de aver quemado suficientemente la piel' ],
+                correctAnswer: 'Todos los días, incluso en días nublados'
+            },
+            {
+                question: '¿Qué vitaminas son beneficiosas para la salud de la piel?',
+                options: ['Vitamina A y B', 'Vitamina C y E', 'Vitamina D y K', 'Vitamina T y P'],
+                correctAnswer: 'Vitamina C y E'
+            }
+            // Agrega más preguntas según desees
+        ];
+
+        let currentQuestionIndex = 0;
+
+        function displayQuestion() {
+            const questionContainer = document.getElementById('question-container');
+            const optionsContainer = document.getElementById('options-container');
+            const currentQuestion = questions[currentQuestionIndex];
+
+            questionContainer.textContent = currentQuestion.question;
+
+            optionsContainer.innerHTML = '';
+            currentQuestion.options.forEach((option, index) => {
+                const optionButton = document.createElement('button');
+                optionButton.classList.add('option');
+                optionButton.textContent = option;
+                optionButton.addEventListener('click', () => checkAnswer(option));
+                optionsContainer.appendChild(optionButton);
+            });
+        }
+
+        function checkAnswer(selectedOption) {
+            const currentQuestion = questions[currentQuestionIndex];
+
+            if (selectedOption === currentQuestion.correctAnswer) {
+                alert('¡Respuesta Correcta!TU SI QUE SABES');
+            } else {
+                alert('Respuesta Incorrecta. La respuesta correcta es: ' + currentQuestion.correctAnswer);
+            }
+
+            // Avanzar a la siguiente pregunta
+            nextQuestion();
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                displayQuestion();
+            } else {
+                alert('¡Has completado el juego!');
+                resetGame();
+            }
+        }
+
+        function resetGame() {
+            currentQuestionIndex = 0;
+            displayQuestion();
+        }
+
+        // Inicializar el juego mostrando la primera pregunta
+        displayQuestion();
+    </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Cuidado de la Piel - Mujer</title>
+    <style>
+        /* Estilos como en el ejemplo anterior */
+    </style>
+</head>
+<body>
+
+    <div id="game-container">
+        <h1>Juego de Cuidado de la Piel - Mujer</h1>
+        <div id="question-container"></div>
+        <div id="options-container"></div>
+        <button onclick="nextQuestion()">Siguiente Pregunta</button>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: '¿Cuál es la importancia de la hidratación diaria para la piel?',
+                options: ['Mantiene la piel joven y saludable', 'Provoca arrugas', 'No tiene impacto en la piel'],
+                correctAnswer: 'Mantiene la piel joven y saludable'
+            },
+            {
+                question: '¿Cuál es el mejor momento para aplicar protector solar?',
+                options: ['Solo en verano', 'Solo en invierno', 'Todos los días, incluso en días nublados'],
+                correctAnswer: 'Todos los días, incluso en días nublados'
+            },
+            // ... Agregar más preguntas aquí ...
+        ];
+
+        let currentQuestionIndex = 0;
+
+        function displayQuestion() {
+            const questionContainer = document.getElementById('question-container');
+            const optionsContainer = document.getElementById('options-container');
+            const currentQuestion = questions[currentQuestionIndex];
+
+            questionContainer.textContent = currentQuestion.question;
+
+            optionsContainer.innerHTML = '';
+            currentQuestion.options.forEach((option, index) => {
+                const optionButton = document.createElement('button');
+                optionButton.classList.add('option');
+                optionButton.textContent = option;
+                optionButton.addEventListener('click', () => checkAnswer(option));
+                optionsContainer.appendChild(optionButton);
+            });
+        }
+
+        function checkAnswer(selectedOption) {
+            const currentQuestion = questions[currentQuestionIndex];
+
+            if (selectedOption === currentQuestion.correctAnswer) {
+                alert('¡Respuesta Correcta!');
+            } else {
+                alert('Respuesta Incorrecta. La respuesta correcta es: ' + currentQuestion.correctAnswer);
+            }
+
+            // Avanzar a la siguiente pregunta
+            nextQuestion();
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                displayQuestion();
+            } else {
+                alert('¡Has completado el juego!');
+                resetGame();
+            }
+        }
+
+        function resetGame() {
+            currentQuestionIndex = 0;
+            displayQuestion();
+        }
+
+        // Inicializar el juego mostrando la primera pregunta
+        displayQuestion();
+    </script>
+
+</body>
+</html>
